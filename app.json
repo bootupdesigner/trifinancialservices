@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "tri-financial-services",
+    "slug": "tri-financial-services",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
