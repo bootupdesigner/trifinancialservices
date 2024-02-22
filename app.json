@@ -1,10 +1,17 @@
 {
   "expo": {
-    "name": "tri-financial-services",
-    "slug": "tri-financial-services",
+    "name": "Tri Financial Services",
+    "slug": "tri",
     "version": "1.0.0",
+    "scheme":"tri-financial-services",
+    "web": {
+      "bundler": "metro"
+    },
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "plugins": [
+      "expo-router"
     ]
   }
 }
