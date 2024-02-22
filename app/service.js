@@ -98,7 +98,9 @@ const Services = ({ navigation }) => {
 
                 <ServiceDescription
                   id={i.id}
+                  blog={i.blog}
                   serviceName={i.serviceName}
+                  prevImg={i.prevImg}
                 />
               </View>
             ))}

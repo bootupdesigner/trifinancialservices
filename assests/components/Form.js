@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View, Platform, } from 'react-native';
 import React, { useState, } from 'react';
 import axios from 'axios';
-import { TextInput,Button } from 'react-native-paper';
-
+import { TextInput, Button } from 'react-native-paper';
+import '@expo/match-media';
+import { useMediaQuery } from "react-responsive";
 
 const Form = () => {
+
+
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1224px)'
+    });
+
+    const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
 
     const [mailerState, setMailerState] = useState({
         name: "",
@@ -19,10 +27,18 @@ const Form = () => {
         }));
     };
 
+    const [loading, setLoading] = useState(false);
+
+
     const submitEmail = async () => {
-        console.log({ mailerState });
+        if (!mailerState.name || !mailerState.email || !mailerState.message) {
+            alert('Please fill in all required fields.');
+            return;
+        }
 
         try {
+            setLoading(true);
+
             const response = await axios.post("https://tri-server.onrender.com/send", {
                 mailerState,
             });
@@ -42,56 +58,117 @@ const Form = () => {
             });
         } catch (error) {
             console.error('Error submitting email:', error);
+
+            alert('An error occurred while submitting the form. Please try again later.');
+
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <View style={{ padding: 30,  height: 450, backgroundColor: 'white', }}>
+        <View>
 
-            <View style={{
-                borderWidth: 1,
-                borderColor: '#ffffff',
-                borderRadius: 25,justifyContent:'space-evenly',
-                padding: 30, height: 400,backgroundColor: 'white',
-                elevation: 10,
-                shadowColor: Platform.OS === 'web' || 'ios' ? '#00000090' : null,
-                shadowOffset: {
-                    height: Platform.OS === 'web' || 'ios' ? 2 : null,
-                    width: Platform.OS === 'web' || 'ios' ? 2 : null
-                },
-                shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
-            }}>
+            {isMobileOrTablet ? (
 
-                <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: '#800000' }} >Contact TRI Financial Services for a Quote</Text>
-                <TextInput
-                    mode='outlined'
-                    label='Name'
-                    placeholder="Name"
-                    value={mailerState.name}
-                    onChangeText={(text) => handleStateChange('name', text)}
-                />
-                <TextInput
-                    label='Email'
-                    mode='outlined'
-                    placeholder="Email"
-                    value={mailerState.email}
-                    onChangeText={(text) => handleStateChange('email', text)}
-                />
-                <TextInput
-                    mode='outlined'
-                    Label='Message'
-                    placeholder="Message"
-                    value={mailerState.message}
-                    onChangeText={(text) => handleStateChange('message', text)}
-                    multiline
-                    numberOfLines={4}
-                />
-                {/* Add a submit button or any other components as needed */}
-                <Button 
-                icon='send'
-                mode='text'
-                 onPress={submitEmail}>Send</Button>
-            </View></View>
+                <View style={{ alignItems: 'center', padding: 10, height: 450, backgroundColor: 'white', }}>
+                    <View style={{
+                        borderWidth: 1,
+                        borderColor: '#ffffff',
+                        borderRadius: 25, justifyContent: 'space-evenly',
+                        paddingHorizontal: 30, height: 400, backgroundColor: 'white',
+                        elevation: 10,
+                        shadowColor: Platform.OS === 'web' || 'ios' ? '#00000090' : null,
+                        shadowOffset: {
+                            height: Platform.OS === 'web' || 'ios' ? 2 : null,
+                            width: Platform.OS === 'web' || 'ios' ? 2 : null
+                        },
+                        shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
+                    }}>
+
+                        <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: '#800000' }} >Contact TRI Financial Services for a Quote</Text>
+                        <TextInput
+                            mode='outlined'
+                            label='Name'
+                            placeholder="Name"
+                            value={mailerState.name}
+                            onChangeText={(text) => handleStateChange('name', text)}
+                        />
+                        <TextInput
+                            label='Email'
+                            mode='outlined'
+                            placeholder="Email"
+                            value={mailerState.email}
+                            onChangeText={(text) => handleStateChange('email', text)}
+                        />
+                        <TextInput
+                            mode='outlined'
+                            Label='Message'
+                            placeholder="Message"
+                            value={mailerState.message}
+                            onChangeText={(text) => handleStateChange('message', text)}
+                            multiline
+                            numberOfLines={4}
+                        />
+                        {/* Add a submit button or any other components as needed */}
+                        <Button
+                            icon='send'
+                            mode='text'
+                            onPress={submitEmail}
+                            disabled={loading}>
+                            {loading ? 'Sending...' : 'Send'}
+                        </Button>
+                    </View>
+                </View>
+            ) : (
+                <View style={{ alignItems: 'center', padding: 30, height: 450, backgroundColor: 'white', }}>
+                    <View style={{
+                        borderWidth: 1,
+                        borderColor: '#ffffff',
+                        borderRadius: 25, justifyContent: 'space-evenly',
+                        padding: 30, height: 400, width: 600, backgroundColor: 'white',
+                        elevation: 10,
+                        shadowColor: Platform.OS === 'web' || 'ios' ? '#00000090' : null,
+                        shadowOffset: {
+                            height: Platform.OS === 'web' || 'ios' ? 2 : null,
+                            width: Platform.OS === 'web' || 'ios' ? 2 : null
+                        },
+                        shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
+                    }}>
+
+                        <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: '#800000' }} >Contact TRI Financial Services for a Quote</Text>
+                        <TextInput
+                            mode='outlined'
+                            label='Name'
+                            placeholder="Name"
+                            value={mailerState.name}
+                            onChangeText={(text) => handleStateChange('name', text)}
+                        />
+                        <TextInput
+                            label='Email'
+                            mode='outlined'
+                            placeholder="Email"
+                            value={mailerState.email}
+                            onChangeText={(text) => handleStateChange('email', text)}
+                        />
+                        <TextInput
+                            mode='outlined'
+                            Label='Message'
+                            placeholder="Message"
+                            value={mailerState.message}
+                            onChangeText={(text) => handleStateChange('message', text)}
+                            multiline
+                            numberOfLines={4}
+                        />
+                        {/* Add a submit button or any other components as needed */}
+                        <Button
+                            icon='send'
+                            mode='text'
+                            onPress={submitEmail}>Send</Button>
+                    </View>
+                </View>
+            )}
+        </View>
     );
 };
 

@@ -16,8 +16,15 @@ const ServiceDescription = ({
                     style={{ width: 300, height: 169, }} />
 
             </View>
-            <Text
-                numberOfLines={2} style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10, }}>{blog[1].summary}</Text>
+            
+            {blog && blog[1] && blog[1].summary && (
+                <Text
+                    numberOfLines={2}
+                    style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}
+                >
+                    {blog[1].summary}
+                </Text>
+            )}
 
             <Text style={styles.learnButton}>Learn more about {serviceName}</Text>
         </TouchableOpacity>

@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
+import React,{useEffect} from 'react';
 import '@expo/match-media';
 import { FontAwesome } from '@expo/vector-icons';
 import Logo from '../images/tri-logo.png';
@@ -48,6 +48,8 @@ const menu = [
 const Header = ({ pageTitle,back }) => {
   const navigation = useNavigation();
 
+  useEffect(() => {
+  }, []);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1224px)'
   });
