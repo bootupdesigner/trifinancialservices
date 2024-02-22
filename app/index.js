@@ -7,6 +7,7 @@ import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import WelcomeVideo from "../assests/components/WelcomeVIdeo";
 import family from '../assests/images/family.jpg';
+import Form from "../assests/components/Form";
 
 export default function Page() {
 
@@ -26,14 +27,14 @@ export default function Page() {
         <ScrollView>
 
           <Header
-            />
+          />
           <View>
-            <View style={{height:300,}}>
+            <View style={{ height: 300, }}>
               <ImageBackground style={styles.image}
                 source={family}
                 resizeMode="='cover'">
-                <Text style={{color:'white',textAlign:'center',fontWeight:'bold',fontSize:24}}>Secure Your Financial Future</Text>
-                <Text style={{color:'white',textAlign:'center',fontWeight:'bold',fontSize:16}}>Contact us today to get your Free Insurance Assessment.</Text>
+                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
+                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
               </ImageBackground>
             </View>
 
@@ -63,6 +64,9 @@ export default function Page() {
             {/* youtube video  */}
 
             <WelcomeVideo />
+            
+            {/* email form  */}
+            <Form />
 
           </View>
         </ScrollView>
@@ -85,9 +89,9 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: "#38434D",
   },
-  image:{
-    height:300,
-    width:'100%',
-    justifyContent:'center',
+  image: {
+    height: 300,
+    width: '100%',
+    justifyContent: 'center',
   }
 });
