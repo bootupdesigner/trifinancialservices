@@ -4,15 +4,56 @@ import React from 'react'
 import Header from '../assests/components/Header'
 import Service from '../assests/components/Service'
 import { useGlobalSearchParams, useNavigation } from 'expo-router';
+import '@expo/match-media';
+import { useMediaQuery } from "react-responsive";
+
 import lifeInsurancePrev from '../assests/images/life-insurance-prev.jpg';
 import lifeInsurance from '../assests/images/life-insurance.jpg';
 import rollovers from '../assests/images/rollovers.jpg';
 import rolloversPrev from '../assests/images/rollovers-prev.jpg';
 import ServiceDescription from '../assests/components/ServiceDescription';
+import mortgagePrev from '../assests/images/mortgagePrev.jpg';
+import mortgage from '../assests/images/mortgage.jpg';
+import mortgageTable from '../assests/images/mortgageTable.jpg';
+import disabiltyPrev from '../assests/images/disabiltyPrev.jpg';
+import disability from '../assests/images/disability.jpg';
+
 
 export const triServices = [
   {
-    id: '401k-ollovers',
+    id: 'disability-insurance',
+    serviceName: `Disability Insurance`,
+    prevImg: disabiltyPrev,
+    image: disability,
+    blog: [
+      {
+        id: '1',
+        summary: [
+          `How long can you financially survive without a paycheck? If you get sick and can’t work, how will you pay the mortgage or rent, gas, electric and groceries? Disability income protection allows you to safeguard one of your most valuable assets – being able to earn an income – and should be an integral part of your financial portfolio. Let’s make sure that if the unexpected happens, you can still provide for yourself and your family. Click here to schedule a complimentary consultation. Schedule a complimentary consultation today.`,]
+      },
+    ]
+  },
+  {
+    id: 'mortgage-protection',
+    serviceName: `Mortgage Protection`,
+    prevImg: mortgagePrev,
+    image: mortgage,
+    mortgageTable: mortgageTable,
+    blog: [
+      {
+        id: '1',
+        summary: [
+          `If you’re disabled and unable to work, the last thing you want is to lose your home. Mortgage protection is coverage a homeowner can purchase to ensure that their mortgage will be paid by the insurer if he or she experiences job loss due to a disability.`,
+
+          `With our mortgage protection plan, you can keep your home intact while you work on healing. In addition, if you were to die prematurely, we can set up a plan to pay off the mortgage for your survivors.`,
+
+          `TRI Financial Services offers the best protection plan:`
+        ]
+      },
+    ]
+  },
+  {
+    id: '401k-rollovers',
     serviceName: `401K Rollovers`,
     prevImg: rolloversPrev,
     image: rollovers,
@@ -75,7 +116,13 @@ export const triServices = [
 ];
 
 const Services = () => {
-const navigation=useNavigation();
+  const navigation = useNavigation();
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1224px)'
+  });
+
+  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
 
 
   const glob = useGlobalSearchParams();
@@ -90,21 +137,50 @@ const navigation=useNavigation();
         <View style={styles.container}>
           <ScrollView>
             <Header pageTitle={
-              'Services'
+              'TRI Financial Services'
             } />
 
-            {triServices.map((i, id) => (
-              <View key={id}>
+            {isMobileOrTablet ?
+              (
+                <View>
 
-                <ServiceDescription
-                  id={i.id}
-                  blog={i.blog}
-                  serviceName={i.serviceName}
-                  prevImg={i.prevImg}
-                  navigation={navigation}
-                />
-              </View>
-            ))}
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {triServices.map((i, index) => (
+                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                        <ServiceDescription
+                          id={i.id}
+                          serviceName={i.serviceName}
+                          prevImg={i.prevImg}
+                          navigation={navigation}
+                          blog={i.blog}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                </View>
+              ) : (
+                <View style={{ paddingHorizontal: 100, }}>
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap',}}>
+
+                    {triServices.map((i, index) => (
+                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                        <ServiceDescription
+                          id={i.id}
+                          serviceName={i.serviceName}
+                          prevImg={i.prevImg}
+                          navigation={navigation}
+                          blog={i.blog}
+                        />
+                      </View>
+                    ))}
+                  </View>
+                </View>
+              )}
+
           </ScrollView>
         </View>
       </SafeAreaView>

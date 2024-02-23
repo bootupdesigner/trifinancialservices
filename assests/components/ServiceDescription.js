@@ -17,16 +17,25 @@ const ServiceDescription = ({
 
             </View>
             
-            {blog && blog[1] && blog[1].summary && (
+            {blog && blog[1] && blog[1].summary ? (
                 <Text
                     numberOfLines={2}
                     style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}
                 >
                     {blog[1].summary}
                 </Text>
+            ):(
+                <Text
+                numberOfLines={2}
+                style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}
+            >
+                {blog[0].summary}
+            </Text>
             )}
 
-            <Text style={styles.learnButton}>Learn more about {serviceName}</Text>
+            <Text 
+            numberOfLines={1}
+            style={styles.learnButton}>Learn more about {serviceName}</Text>
         </TouchableOpacity>
     )
 }
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
         shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
     },
     learnButton: {
-        fontSize: 16, fontWeight: 'bold', textAlign: 'center', color: '#800000', backgroundColor: '#000000', paddingVertical: 12,
+        fontSize: 16, fontWeight: 'bold', textAlign: 'center', color: '#800000', backgroundColor: '#000000', padding: 12,
         borderColor: '#800000',
         borderBottomLeftRadius: 25, borderBottomRightRadius: 25,
     },
