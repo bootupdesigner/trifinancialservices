@@ -33,7 +33,7 @@ export default function Page() {
               <View style={{ height: 300, }}>
                 <ImageBackground style={styles.image}
                   source={family}
-                  resizeMode="='cover'">
+                  resizeMode='cover'>
                   <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
                   <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
                 </ImageBackground>

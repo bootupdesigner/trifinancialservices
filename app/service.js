@@ -3,7 +3,7 @@ import { Platform, StatusBar, ScrollView, StyleSheet, Text, View, SafeAreaView, 
 import React from 'react'
 import Header from '../assests/components/Header'
 import Service from '../assests/components/Service'
-import { useGlobalSearchParams } from 'expo-router';
+import { useGlobalSearchParams, useNavigation } from 'expo-router';
 import lifeInsurancePrev from '../assests/images/life-insurance-prev.jpg';
 import lifeInsurance from '../assests/images/life-insurance.jpg';
 import rollovers from '../assests/images/rollovers.jpg';
@@ -74,8 +74,8 @@ export const triServices = [
   }
 ];
 
-const Services = ({ navigation }) => {
-
+const Services = () => {
+const navigation=useNavigation();
 
 
   const glob = useGlobalSearchParams();
@@ -101,6 +101,7 @@ const Services = ({ navigation }) => {
                   blog={i.blog}
                   serviceName={i.serviceName}
                   prevImg={i.prevImg}
+                  navigation={navigation}
                 />
               </View>
             ))}

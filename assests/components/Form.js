@@ -4,6 +4,7 @@ import axios from 'axios';
 import { TextInput, Button } from 'react-native-paper';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 const Form = () => {
 
@@ -32,7 +33,11 @@ const Form = () => {
 
     const submitEmail = async () => {
         if (!mailerState.name || !mailerState.email || !mailerState.message) {
-            alert('Please fill in all required fields.');
+            Toast.show({
+                type: 'error',
+                text1: 'Validation Error',
+                text2: 'Please fill in all required fields.',
+            });
             return;
         }
 
@@ -46,10 +51,17 @@ const Form = () => {
             const resData = response.data;
             console.log(resData);
 
-            if (resData.status === "success") {
-                alert("Message Sent");
-            } else if (resData.status === "fail") {
-                alert("Message failed to send");
+            if (resData.status === 'success') {
+                Toast.show({
+                    type: 'success',
+                    text1: 'Message Sent',
+                });
+
+            } else if (resData.status === 'fail') {
+                Toast.show({
+                    type: 'error',
+                    text1: 'Message failed to send',
+                });
             }
             setMailerState({
                 email: "",
@@ -58,9 +70,11 @@ const Form = () => {
             });
         } catch (error) {
             console.error('Error submitting email:', error);
-
-            alert('An error occurred while submitting the form. Please try again later.');
-
+            Toast.show({
+                type: 'error',
+                text1: 'Submission Error',
+                text2: 'An error occurred while submitting the form. Please try again later.',
+            });
         } finally {
             setLoading(false);
         }
@@ -71,7 +85,7 @@ const Form = () => {
 
             {isMobileOrTablet ? (
 
-                <View style={{ alignItems: 'center', padding: 10, height: 450, backgroundColor: 'white', }}>
+                <View style={{ alignItems: 'center', paddingVertical: 30, height: 450, backgroundColor: 'white', }}>
                     <View style={{
                         borderWidth: 1,
                         borderColor: '#ffffff',
@@ -115,7 +129,8 @@ const Form = () => {
                             icon='send'
                             mode='text'
                             onPress={submitEmail}
-                            disabled={loading}>
+                            disabled={loading}
+                            textColor='#800000'>
                             {loading ? 'Sending...' : 'Send'}
                         </Button>
                     </View>
@@ -164,7 +179,11 @@ const Form = () => {
                         <Button
                             icon='send'
                             mode='text'
-                            onPress={submitEmail}>Send</Button>
+                            onPress={submitEmail}
+                            disabled={loading}
+                            textColor='#800000'>
+                            {loading ? 'Sending...' : 'Send'}
+                        </Button>
                     </View>
                 </View>
             )}
