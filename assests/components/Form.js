@@ -44,8 +44,10 @@ const Form = () => {
         try {
             setLoading(true);
 
-            const response = await axios.post("https://tri-server.onrender.com/send", {
+            const response = await axios.post("http://localhost:8080/send", {
                 mailerState,
+            }, {
+                timeout: 10000, // Set the timeout to 10 seconds (adjust as needed)
             });
 
             const resData = response.data;
@@ -57,6 +59,7 @@ const Form = () => {
                     text1: 'Message Sent',
                 });
 
+             
             } else if (resData.status === 'fail') {
                 Toast.show({
                     type: 'error',
