@@ -5,8 +5,17 @@ import axios from 'axios';
 import YoutubePlayer from "react-native-youtube-iframe";
 import { FontAwesome } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
+import '@expo/match-media';
+import { useMediaQuery } from "react-responsive";
+
 
 const Videos = () => {
+
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1224px)'
+    });
+
+    const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
 
     const [videoBlogs, setVideoBlogs] = useState([]);
 
@@ -50,37 +59,80 @@ const Videos = () => {
     //  `https://www.youtube.com/watch?v=${blog.id.videoId}`
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1, }}>
             <View style={styles.container}>
                 <ScrollView>
                     <Header
                         pageTitle={'Videos'} />
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false} >
-                        {videoBlogs.map((blog) => (
-                            <View key={blog.id.videoId} style={{ padding: 10, width: 315, justifyContent: 'space-evenly',  }}>
-                                <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', }}>{blog.snippet.title}</Text>
 
-                                <View>
-                                    <YoutubePlayer
-                                        height={169}
-                                        width={300}
-                                        play={playing}
-                                        videoId={blog.id.videoId}
-                                        onChangeState={onStateChange}
-                                    />
-                                </View>
-                                <Text numberOfLines={2} style={{ fontSize: 16 }}>{blog.snippet.description}</Text>
+                    {isMobileOrTablet ?
+                        (
+                            <View>
+                                <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+                                    {videoBlogs.map((blog) => (
+                                        <View key={blog.id.videoId} style={{ paddingVertical: 30, marginHorizontal: 10, width: 315, height: 350, justifyContent: 'space-between', }}>
+                                            <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', }}>{blog.snippet.title}</Text>
 
+                                            <View>
+                                                <YoutubePlayer
+                                                    height={169}
+                                                    width={300}
+                                                    play={playing}
+                                                    videoId={blog.id.videoId}
+                                                    onChangeState={onStateChange}
+                                                />
+                                            </View>
+                                            <Text numberOfLines={2} style={{ fontSize: 16 }}>{blog.snippet.description}</Text>
+
+                                        </View>
+                                    ))}
+                                </ScrollView>
+
+                                <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    paddingHorizontal: 10,
+                                }}>
+                                    <FontAwesome name="youtube" size={24} color="black" />
+
+                                    <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', padding: 10 }}>Follow Us On YouTube!</Text>
+
+                                </TouchableOpacity >
                             </View>
-                        ))}
-                    </ScrollView>
-                    <TouchableOpacity onPress={()=>Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
-                        flexDirection: 'row',
-                        paddingHorizontal: 10
-                    }}>
-                        <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', }}>Follow Us On YouTube!</Text>
-                        <FontAwesome name="youtube" size={24} color="black" />
-                    </TouchableOpacity >
+                        ) : (
+                            <View style={{ flexDirection: "row", flexWrap: 'wrap', paddingHorizontal: 100, }}>
+                                {videoBlogs.map((blog) => (
+                                    <View key={blog.id.videoId} style={{ paddingVertical: 30, marginHorizontal: 20, width: 315, height: 350, justifyContent: 'space-evenly', }}>
+                                        <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', }}>{blog.snippet.title}</Text>
+
+                                        <View>
+                                            <YoutubePlayer
+                                                height={169}
+                                                width={300}
+                                                play={playing}
+                                                videoId={blog.id.videoId}
+                                                onChangeState={onStateChange}
+                                            />
+                                        </View>
+                                        <Text numberOfLines={2} style={{ fontSize: 16 }}>{blog.snippet.description}</Text>
+
+                                    </View>
+                                ))}
+
+                                <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    paddingHorizontal: 10,
+                                }}>
+                                    <FontAwesome name="youtube" size={24} color="black" />
+
+                                    <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', padding: 10 }}>Follow Us On YouTube!</Text>
+
+                                </TouchableOpacity >
+                            </View>
+                        )
+                    }
+
                 </ScrollView>
             </View>
 
@@ -92,6 +144,7 @@ export default Videos
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         paddingTop: Platform.OS === "android" ?
             StatusBar.currentHeight : 0,
     },
