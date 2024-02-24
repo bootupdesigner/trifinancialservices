@@ -20,7 +20,7 @@ export default function WelcomVideo() {
 
     return (
 
-        <View style={{ alignItems: 'center', backgroundColor: 'black', paddingVertical: 20, }}>
+        <View style={{ marginVertical:20,alignItems: 'center',justifyContent:'space-evenly', backgroundColor: 'black', paddingVertical: 20,height:400, }}>
             <Text style={{ color: 'white', paddingVertical: 10, fontSize: 24, fontWeight: 'bold', }}>Follow Us On YouTube</Text>
             {isMobile ? (
                 <YoutubePlayer

@@ -1,13 +1,13 @@
 import { useNavigation } from "expo-router";
-import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView } from "react-native";
+import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView, Touchable, TouchableOpacity } from "react-native";
 import Header from '.././assests/components/Header';
 import ServiceDescription from "../assests/components/ServiceDescription";
-import { triServices } from "./service";
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import WelcomeVideo from "../assests/components/WelcomeVIdeo";
 import family from '../assests/images/family.jpg';
 import Form from "../assests/components/Form";
+import { triServices } from "../assests/data";
 
 export default function Page() {
 
@@ -24,54 +24,95 @@ export default function Page() {
   return (
 
     <SafeAreaView style={{ flex: 1, }}>
-        <View style={styles.container}>
-          <ScrollView>
+      <View style={styles.container}>
+        <ScrollView>
 
-            <Header
-            />
-            <View>
-              <View style={{ height: 300, }}>
-                <ImageBackground style={styles.image}
-                  source={family}
-                  resizeMode='cover'>
-                  <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
-                  <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
-                </ImageBackground>
-              </View>
-
-              <Text
-                style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
-              <Text
-                style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
-
-              <Text
-                onPress={() => navigation.navigate('service')}
-                style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {triServices.map((i, index) => (
-                  <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
-                    <ServiceDescription
-                      id={i.id}
-                      serviceName={i.serviceName}
-                      prevImg={i.prevImg}
-                      navigation={navigation}
-                      blog={i.blog}
-                    />
-                  </View>
-                ))}
-              </ScrollView>
-
-              {/* youtube video  */}
-
-              <WelcomeVideo />
-
-              {/* email form  */}
-              <Form />
-
+          <Header
+          />
+          <View>
+            <View style={{ height: 300, }}>
+              <ImageBackground style={styles.image}
+                source={family}
+                resizeMode='cover'>
+                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
+                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
+              </ImageBackground>
             </View>
-          </ScrollView>
-        </View>
+
+            {isMobileOrTablet ?
+              (
+                <View>
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                  <Text
+                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+
+
+                  <Text
+                    onPress={() => navigation.navigate('service')}
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+
+
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {triServices.map((i, index) => (
+                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                        <ServiceDescription
+                          id={i.id}
+                          serviceName={i.serviceName}
+                          prevImg={i.prevImg}
+                          navigation={navigation}
+                          blog={i.blog}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                  <TouchableOpacity
+                  style={{margin:10,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
+                    onPress={() => navigation.navigate('service')}>
+                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All Services</Text>
+                  </TouchableOpacity>
+                </View>
+
+              ) : (
+                <View style={{ paddingHorizontal: 100, }}>
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                  <Text
+                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
+
+                    {triServices && triServices.slice(0, 6).map((i, index) => (
+                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                        <ServiceDescription
+                          id={i.id}
+                          serviceName={i.serviceName}
+                          prevImg={i.prevImg}
+                          navigation={navigation}
+                          blog={i.blog}
+                        />
+                      </View>
+                    ))}
+                  </View>
+                  <TouchableOpacity
+                  style={{margin:10,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
+                    onPress={() => navigation.navigate('service')}>
+                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All Services</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+            {/* youtube video  */}
+
+            <WelcomeVideo />
+
+            {/* email form  */}
+            <Form />
+
+          </View>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
