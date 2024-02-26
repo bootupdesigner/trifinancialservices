@@ -11,7 +11,7 @@ const ServiceDescription = ({
             <Text style={styles.cardHeading}>{serviceName}</Text>
             <View style={{ alignItems: 'center', backgroundColor: 'white', }}>
                 <Image
-                    source={prevImg}
+                    source={{uri: prevImg}}
                     resizeMode='contain'
                     style={{ width: 300, height: 169, }} />
 

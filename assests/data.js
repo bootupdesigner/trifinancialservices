@@ -1,19 +1,12 @@
-import lifeInsurancePrev from './images/life-insurance-prev.jpg';
-import lifeInsurance from './images/life-insurance.jpg';
-import rollovers from './images/rollovers.jpg';
-import rolloversPrev from './images/rollovers-prev.jpg';
-import mortgagePrev from './images/mortgagePrev.jpg';
-import mortgage from './images/mortgage.jpg';
 import mortgageTable from './images/mortgageTable.jpg';
-import disabiltyPrev from './images/disabiltyPrev.jpg';
-import disability from './images/disability.jpg';
+
 
 export const triServices = [
     {
       id: 'disability-insurance',
       serviceName: `Disability Insurance`,
-      prevImg: disabiltyPrev,
-      image: disability,
+      prevImg: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708901215/disabiltyPrev_t4iafv.jpg',
+      image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909419/disability_jxtmii.jpg',
       blog: [
         {
           id: '1',
@@ -25,8 +18,8 @@ export const triServices = [
     {
       id: 'mortgage-protection',
       serviceName: `Mortgage Protection`,
-      prevImg: mortgagePrev,
-      image: mortgage,
+      prevImg: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708907135/mortgagePrev_xgfr2y.jpg',
+      image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909419/mortgage_lubeex.jpg',
       mortgageTable: mortgageTable,
       blog: [
         {
@@ -44,8 +37,8 @@ export const triServices = [
     {
       id: '401k-rollovers',
       serviceName: `401K Rollovers`,
-      prevImg: rolloversPrev,
-      image: rollovers,
+      prevImg: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708907136/rollovers-prev_jjsxpl.jpg',
+      image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909419/rollovers_ay3jmw.jpg',
       blog: [
         {
           id: '1',
@@ -77,8 +70,8 @@ export const triServices = [
     {
       id: 'life-insurance',
       serviceName: 'Life Insurance',
-      prevImg: lifeInsurancePrev,
-      image: lifeInsurance,
+      prevImg: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708907135/life-insurance-prev_wigwyi.jpg',
+      image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909419/life-insurance_hh1rwg.jpg',
       blog: [
         {
           id: '1',

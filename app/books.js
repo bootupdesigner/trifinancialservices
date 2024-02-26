@@ -4,8 +4,6 @@ import Header from '../assests/components/Header';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import * as Linking from 'expo-linking';
-import Book1 from '../assests/images/sma.jpg';
-import Book2 from '../assests/images/srl.jpg';
 
 const readings = [
     {
@@ -13,13 +11,13 @@ const readings = [
         title: 'Saving Middle America, Securing Financial Dreams',
         author: `By Rich Rossi with Barbara Bolcavage and Anthony Stewart`,
         description: `This book provides readers with the knowledge necessary to help secure their financial futures with safety and security.`,
-        image: Book1,
+        image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708910071/sma_kccdvu.jpg',
     }, {
         id: '2',
         title: `Stay Rich for Life!: Growing & Protecting Your Money in Turbulent Times`,
         author: `By Ed Slott`,
         description: `Given the challenging economic times, we will all welcome Ed Slott’s concrete advice for generating enormous wealth.`,
-        image: Book2,
+        image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708910071/srl_qmrsx4.jpg',
     }
 ]
 const Books = () => {
@@ -53,7 +51,7 @@ const Books = () => {
 
                                             <Text style={{ paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
 
-                                            <Image source={book.image} resizeMode='contain'
+                                            <Image source={{uri:book.image}} resizeMode='contain'
                                                 style={{ paddingVertical: 3, height: 200, width: '100%', }} />
 
                                             <Text style={{ paddingVertical: 3, fontSize: 16, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>
@@ -80,7 +78,7 @@ const Books = () => {
 
                                         <Text style={{ paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
 
-                                        <Image source={book.image} resizeMode='contain'
+                                        <Image source={{uri:book.image}} resizeMode='contain'
                                             style={{ paddingVertical: 3, height: 200, width: '100%', }} />
 
                                         <Text style={{ paddingVertical: 3, fontSize: 16, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>

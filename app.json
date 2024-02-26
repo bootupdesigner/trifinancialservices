@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "scheme":"tri-financial-services",
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon":"./assests/images/favicon.png"
     },
     "assetBundlePatterns": [
       "**/*"

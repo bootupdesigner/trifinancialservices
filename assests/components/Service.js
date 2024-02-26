@@ -32,14 +32,14 @@ const Service = ({
                 {isMobile ? (
 
                     <Image
-                        source={prevImg}
+                        source={{uri:prevImg}}
                         resizeMode='contain'
                         style={{ width: 300, height: 169, }} />
                 ) : (
 
                     <Image
-                        source={prevImg}
-                        resizeMode='contain'
+                    source={{uri:prevImg}}
+                    resizeMode='contain'
                         style={{ width: 560, height: 315, }} />
                 )}
             </View>
@@ -60,13 +60,13 @@ const Service = ({
                 {isMobile ? (
 
                     <Image
-                        source={image}
+                        source={{uri:image}}
                         resizeMode='contain'
                         style={{ width: 300, height: 169, }} />
                 ) : (
 
                     <Image
-                        source={image}
+                        source={{uri:image}}
                         resizeMode='contain'
                         style={{ width: 560, height: 315, }} />
                 )}

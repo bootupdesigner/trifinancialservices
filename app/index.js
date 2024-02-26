@@ -1,11 +1,10 @@
 import { useNavigation } from "expo-router";
-import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView, Touchable, TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView,  TouchableOpacity } from "react-native";
 import Header from '.././assests/components/Header';
 import ServiceDescription from "../assests/components/ServiceDescription";
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import WelcomeVideo from "../assests/components/WelcomeVIdeo";
-import family from '../assests/images/family.jpg';
 import Form from "../assests/components/Form";
 import { triServices } from "../assests/data";
 
@@ -32,7 +31,7 @@ export default function Page() {
           <View>
             <View style={{ height: 300, }}>
               <ImageBackground style={styles.image}
-                source={family}
+                source={{uri:'https://res.cloudinary.com/daj06anmm/image/upload/v1708909951/family_gngszc.jpg'}}
                 resizeMode='cover'>
                 <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
                 <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
@@ -69,7 +68,7 @@ export default function Page() {
                   <TouchableOpacity
                   style={{margin:10,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
                     onPress={() => navigation.navigate('service')}>
-                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All Services</Text>
+                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All</Text>
                   </TouchableOpacity>
                 </View>
 
@@ -96,9 +95,9 @@ export default function Page() {
                     ))}
                   </View>
                   <TouchableOpacity
-                  style={{margin:10,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
+                  style={{margin:30,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
                     onPress={() => navigation.navigate('service')}>
-                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All Services</Text>
+                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All</Text>
                   </TouchableOpacity>
                 </View>
               )}

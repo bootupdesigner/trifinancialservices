@@ -37,9 +37,9 @@ const Videos = () => {
                     {
                         params: {
                             part: 'id,snippet',
-                            channelId: 'UCyjmGgjaYc9gCEbMhRYTk-w', // 'UClrwWrJ3er3i_IyudlpdCRw' belongs to me
+                            channelId: 'UCyjmGgjaYc9gCEbMhRYTk-w', 
                             type: 'video',
-                            key: `${process.env.GOOGLE_YOUTUBE_API}`, // Replace with your actual YouTube API key
+                            key: `${process.env.GOOGLE_YOUTUBE_API}`,
                         },
                     }
                 );
@@ -54,9 +54,7 @@ const Videos = () => {
         };
 
         fetchData();
-    }, []); // Empty dependency array ensures the effect runs only once, similar to componentDidMount
-
-    //  `https://www.youtube.com/watch?v=${blog.id.videoId}`
+    }, []); 
 
     return (
         <SafeAreaView style={{ flex: 1, }}>
