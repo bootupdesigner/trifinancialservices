@@ -186,7 +186,7 @@ const Form = () => {
     return (
         <View>
             {isMobile && (
-                <View style={{ alignItems: 'center', paddingVertical: 30, height: '100%', backgroundColor: 'white', paddingHorizontal: 10. }}>
+                <View style={{ alignItems: 'center', paddingVertical: 30, backgroundColor: 'white', paddingHorizontal: 10. }}>
                     <View style={{
                         borderWidth: 1,
                         borderColor: '#ffffff',
@@ -227,15 +227,22 @@ const Form = () => {
                         />
 
                         <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
-                            {mailerState.services && mailerState.services.map((service, index) => (
-                                <Checkbox.Item
-                                    key={index}
-                                    label={service}
-                                    status={service ? 'checked' : 'unchecked'}
-                                    onPress={() => handleCheckboxChange(index)}
-                                />
-                            ))}
+                            {mailerState.services &&
+                                mailerState.services.map((service, index) => (
+                                    <Checkbox.Item
+                                        key={index}
+                                        label={service.name}
+                                        status={service.selected ? 'checked' : 'unchecked'}
+                                        onPress={() => handleCheckboxChange(index)}
+                                    />
+                                ))}
                         </View>
+
+                        {/* <ReCAPTCHA
+                            sitekey={process.env.RECAPTCHA_SITE_KEY}
+                            onChange={onChange}
+
+                        /> */}
 
                         <Button
                             icon='send'
@@ -251,7 +258,7 @@ const Form = () => {
 
             {isTablet && (
 
-                <View style={{ alignItems: 'center', paddingVertical: 30, height: '100%', backgroundColor: 'white', paddingHorizontal: 30 }}>
+                <View style={{ alignItems: 'center', paddingVertical: 30,  backgroundColor: 'white', paddingHorizontal: 30 }}>
                     <View style={{
                         borderWidth: 1,
                         borderColor: '#ffffff',
@@ -291,15 +298,22 @@ const Form = () => {
                             numberOfLines={4}
                         />
                         <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
-                            {mailerState.services && mailerState.services.map((service, index) => (
-                                <Checkbox.Item
-                                    key={index}
-                                    label={service.service}
-                                    status={service.checked ? 'checked' : 'unchecked'}
-                                    onPress={() => handleCheckboxChange(index)}
-                                />
-                            ))}
+                            {mailerState.services &&
+                                mailerState.services.map((service, index) => (
+                                    <Checkbox.Item
+                                        key={index}
+                                        label={service.name}
+                                        status={service.selected ? 'checked' : 'unchecked'}
+                                        onPress={() => handleCheckboxChange(index)}
+                                    />
+                                ))}
                         </View>
+
+                        {/* <ReCAPTCHA
+                            sitekey={process.env.RECAPTCHA_SITE_KEY}
+                            onChange={onChange}
+
+                        /> */}
 
                         <Button
                             icon='send'
@@ -365,11 +379,11 @@ const Form = () => {
                                 ))}
                         </View>
 
-                        {/* <ReCAPTCHA
+                        <ReCAPTCHA
                             sitekey={process.env.RECAPTCHA_SITE_KEY}
                             onChange={onChange}
 
-                        /> */}
+                        />
 
                         <Button
                             icon='send'

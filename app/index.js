@@ -13,11 +13,18 @@ export default function Page() {
 
   const navigation = useNavigation();
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1224px)'
+  const isMobile = useMediaQuery({
+    maxDeviceWidth: 480,
+  })
+
+  const isTablet = useMediaQuery({
+    minDeviceWidth: 480,
+    maxDeviceWidth: 1224,
   });
 
-  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
+  const isDesktopOrLaptop = useMediaQuery({
+    minDeviceWidth: 1224,
+  });
 
   const financialFuture = `Enroll in Medicare or change plan today! Contact Renee to learn about better life insurance policies. We’re Ready to answer any questions you may have about your 401K Rollover. Call Renee Today!`
 
@@ -39,7 +46,7 @@ export default function Page() {
               </ImageBackground>
             </View>
 
-            {isMobileOrTablet ?
+            {isMobile &&
               (
                 <View>
                   <Text
@@ -71,47 +78,49 @@ export default function Page() {
                     onPress={() => navigation.navigate('service')}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
                   </TouchableOpacity>
+
+                  {/* youtube video  */}
+
+                  <WelcomeVideo />
+
+                  {/* email form  */}
+                  <Form />
+                  <Footer />
                 </View>
 
-              ) : (
-                <View style={{ paddingHorizontal: 100, }}>
-                  <Text
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
-                  <Text
-                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
-                  <Text
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
-
-                    {triServices && triServices.slice(0, 6).map((i, index) => (
-                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
-                        <ServiceDescription
-                          id={i.id}
-                          serviceName={i.serviceName}
-                          prevImg={i.prevImg}
-                          navigation={navigation}
-                          blog={i.blog}
-                        />
-                      </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={{ margin: 30, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
-                    onPress={() => navigation.navigate('service')}>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
-                  </TouchableOpacity>
-                </View>
               )}
 
-            {/* youtube video  */}
+            {isDesktopOrLaptop && (
+              <View style={{ paddingHorizontal: 100, }}>
+                <Text
+                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                <Text
+                  style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+                <Text
+                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
 
-            <WelcomeVideo />
+                  {triServices && triServices.slice(0, 6).map((i, index) => (
+                    <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                      <ServiceDescription
+                        id={i.id}
+                        serviceName={i.serviceName}
+                        prevImg={i.prevImg}
+                        navigation={navigation}
+                        blog={i.blog}
+                      />
+                    </View>
+                  ))}
+                </View>
+                <TouchableOpacity
+                  style={{ margin: 30, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
+                  onPress={() => navigation.navigate('service')}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
+                </TouchableOpacity>
+              </View>
+            )}
 
-            {/* email form  */}
-            <Form />
-            <Footer />
-
-          </View>          
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -121,7 +130,7 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white',
+    backgroundColor: 'white',
     paddingTop: Platform.OS === "android" ?
       StatusBar.currentHeight : 0,
   },
