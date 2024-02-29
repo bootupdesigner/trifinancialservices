@@ -237,12 +237,6 @@ const Form = () => {
                             ))}
                         </View>
 
-                        {/* <ReCAPTCHA
-                            sitekey={process.env.RECAPTCHA_SITE_KEY}
-                            onChange={onChange}
-
-                        /> */}
-                        {/* Add a submit button or any other components as needed */}
                         <Button
                             icon='send'
                             mode='text'
@@ -306,12 +300,6 @@ const Form = () => {
                                 />
                             ))}
                         </View>
-
-                        {/* <ReCAPTCHA
-                            sitekey={process.env.RECAPTCHA_SITE_KEY}
-                            onChange={onChange}
-
-                        /> */}
 
                         <Button
                             icon='send'
@@ -377,12 +365,12 @@ const Form = () => {
                                 ))}
                         </View>
 
-                        <ReCAPTCHA
+                        {/* <ReCAPTCHA
                             sitekey={process.env.RECAPTCHA_SITE_KEY}
                             onChange={onChange}
 
-                        />
-                        {/* Add a submit button or any other components as needed */}
+                        /> */}
+
                         <Button
                             icon='send'
                             mode='text'
