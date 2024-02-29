@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
     },
     learnButton: {
-        fontSize: 16, fontWeight: 'bold', textAlign: 'center', color: '#800000', backgroundColor: '#000000', padding: 12,
+        fontSize: 16, fontWeight: 'bold', textAlign: 'center', color: '#ffffff', backgroundColor: '#000000', padding: 12,
         borderColor: '#800000',
         borderBottomLeftRadius: 25, borderBottomRightRadius: 25,
     },

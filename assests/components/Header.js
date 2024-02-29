@@ -8,11 +8,11 @@ import { useMediaQuery } from "react-responsive";
 import { router, useNavigation, } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const menu = [
+export const menu = [
   {
     id: '1',
     page: '/',
-    name: 'TRI Financial Services',
+    name: 'TRI',
   },
   {
     id: '2',
@@ -22,25 +22,25 @@ const menu = [
   {
     id: '3',
     page: '/service',
-    name: 'Service',
+    name: 'Services',
   },
   {
-    id: '3',
+    id: '4',
     page: '/books',
     name: 'Books',
   },
   {
-    id: '4',
+    id: '5',
     page: '/videos',
     name: 'Videos',
   },
   {
-    id: '5',
-    page: '/blogs',
-    name: 'Blogs',
+    id: '6',
+    page: 'https://reneeilesanmi.myhomehq.biz/newsletters',
+    name: 'Newsletter',
   },
   {
-    id: '6',
+    id: '7',
     page: '/contact',
     name: 'Contact Us',
   },
@@ -92,7 +92,7 @@ const Header = ({ pageTitle,back }) => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'flex-end', backgroundColor: 'black', paddingVertical: 10, width: '100%' }}>
             <TouchableOpacity style={{ paddingHorizontal: 20 }} onPress={() => navigation.openDrawer()}>
-              <MaterialIcons name="menu" size={32} color="#800000" />
+              <MaterialIcons name="menu" size={32} color="#ffffff" />
             </TouchableOpacity>
           </View>
 

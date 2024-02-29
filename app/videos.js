@@ -7,6 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
+import Footer from '../assests/components/Footer';
 
 
 const Videos = () => {
@@ -37,7 +38,7 @@ const Videos = () => {
                     {
                         params: {
                             part: 'id,snippet',
-                            channelId: 'UCyjmGgjaYc9gCEbMhRYTk-w', 
+                            channelId: 'UCyjmGgjaYc9gCEbMhRYTk-w',
                             type: 'video',
                             key: `${process.env.GOOGLE_YOUTUBE_API}`,
                         },
@@ -54,7 +55,7 @@ const Videos = () => {
         };
 
         fetchData();
-    }, []); 
+    }, []);
 
     return (
         <SafeAreaView style={{ flex: 1, }}>
@@ -98,36 +99,42 @@ const Videos = () => {
                                 </TouchableOpacity >
                             </View>
                         ) : (
-                            <View style={{ flexDirection: "row", flexWrap: 'wrap', paddingHorizontal: 100, }}>
-                                {videoBlogs.map((blog) => (
-                                    <View key={blog.id.videoId} style={{ paddingVertical: 30, marginHorizontal: 20, width: 315, height: 350, justifyContent: 'space-evenly', }}>
-                                        <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', }}>{blog.snippet.title}</Text>
+                            <>
+                                <View style={{ paddingHorizontal: 100, }}>
 
-                                        <View>
-                                            <YoutubePlayer
-                                                height={169}
-                                                width={300}
-                                                play={playing}
-                                                videoId={blog.id.videoId}
-                                                onChangeState={onStateChange}
-                                            />
-                                        </View>
-                                        <Text numberOfLines={2} style={{ fontSize: 16 }}>{blog.snippet.description}</Text>
+                                    <View style={{ flexDirection: "row", flexWrap: 'wrap', }}>
+                                        {videoBlogs.map((blog) => (
+                                            <View key={blog.id.videoId} style={{ paddingVertical: 30, marginHorizontal: 20, width: 315, height: 350, justifyContent: 'space-evenly', }}>
+                                                <Text numberOfLines={2} style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', }}>{blog.snippet.title}</Text>
+
+                                                <View>
+                                                    <YoutubePlayer
+                                                        height={169}
+                                                        width={300}
+                                                        play={playing}
+                                                        videoId={blog.id.videoId}
+                                                        onChangeState={onStateChange}
+                                                    />
+                                                </View>
+                                                <Text numberOfLines={2} style={{ fontSize: 16 }}>{blog.snippet.description}</Text>
+
+                                            </View>
+                                        ))}
 
                                     </View>
-                                ))}
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        paddingHorizontal: 10,
+                                    }}>
+                                        <FontAwesome name="youtube" size={24} color="black" />
 
-                                <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    paddingHorizontal: 10,
-                                }}>
-                                    <FontAwesome name="youtube" size={24} color="black" />
+                                        <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', padding: 10 }}>Follow Us On YouTube!</Text>
 
-                                    <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', padding: 10 }}>Follow Us On YouTube!</Text>
-
-                                </TouchableOpacity >
-                            </View>
+                                    </TouchableOpacity >
+                                </View>
+                                <Footer />
+                            </>
                         )
                     }
 

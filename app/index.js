@@ -1,5 +1,5 @@
 import { useNavigation } from "expo-router";
-import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView,  TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, Text, Platform, StatusBar, View, ImageBackground, SafeAreaView, TouchableOpacity } from "react-native";
 import Header from '.././assests/components/Header';
 import ServiceDescription from "../assests/components/ServiceDescription";
 import '@expo/match-media';
@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import WelcomeVideo from "../assests/components/WelcomeVIdeo";
 import Form from "../assests/components/Form";
 import { triServices } from "../assests/data";
+import Footer from "../assests/components/Footer";
 
 export default function Page() {
 
@@ -31,7 +32,7 @@ export default function Page() {
           <View>
             <View style={{ height: 300, }}>
               <ImageBackground style={styles.image}
-                source={{uri:'https://res.cloudinary.com/daj06anmm/image/upload/v1708909951/family_gngszc.jpg'}}
+                source={{ uri: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909951/family_gngszc.jpg' }}
                 resizeMode='cover'>
                 <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
                 <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
@@ -66,9 +67,9 @@ export default function Page() {
                     ))}
                   </ScrollView>
                   <TouchableOpacity
-                  style={{margin:10,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
+                    style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
                     onPress={() => navigation.navigate('service')}>
-                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All</Text>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
                   </TouchableOpacity>
                 </View>
 
@@ -95,9 +96,9 @@ export default function Page() {
                     ))}
                   </View>
                   <TouchableOpacity
-                  style={{margin:30,padding:10,width:180,backgroundColor:'black',alignItems:'center', justifyContent:'center',borderColor:'#800000',borderWidth:1, borderRadius:25}}
+                    style={{ margin: 30, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
                     onPress={() => navigation.navigate('service')}>
-                    <Text style={{fontSize:16,fontWeight:'bold',color:'white',}}>View All</Text>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
                   </TouchableOpacity>
                 </View>
               )}
@@ -108,8 +109,9 @@ export default function Page() {
 
             {/* email form  */}
             <Form />
+            <Footer />
 
-          </View>
+          </View>          
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -119,6 +121,7 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'white',
     paddingTop: Platform.OS === "android" ?
       StatusBar.currentHeight : 0,
   },
