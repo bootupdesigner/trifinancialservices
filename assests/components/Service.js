@@ -25,8 +25,7 @@ const Service = ({
     };
 
     return (
-        <View>
-            <Text onPress={navigateToService}>{serviceName}</Text>
+        <View style={{paddingVertical: 30}}>
             <View style={{ alignItems: 'center' }}>
 
                 {isMobile ? (

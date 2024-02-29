@@ -4,7 +4,7 @@ import Header from '../assests/components/Header';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import * as Linking from 'expo-linking';
-
+import Footer from '../assests/components/Footer';
 const readings = [
     {
         id: '1',
@@ -29,29 +29,27 @@ const Books = () => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1, }}>
             <View style={styles.container}>
                 <ScrollView>
                     <Header
                         pageTitle={'Books'} />
 
                     {isDesktopOrLaptop &&
-                        <View style={{ alignItems: 'center' }}>
-                            <ScrollView
-                                horizontal
-                                showsHorizontalScrollIndicator={false}>
+                        <View style={{ alignItems: 'center',paddingVertical:30 }}>
+                            <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-around',flexWrap:'wrap',}}>
 
                                 {
                                     readings.map((book, id) => (
                                         <View
                                             key={id}
-                                            style={{ justifyContent: 'space-between', alignItems: 'center', width: 350, padding: 15, borderWidth: 1, borderColor: '#800000', elevation: 10, borderRadius: 25, margin: 5 }}>
+                                            style={styles.bookCard}>
 
                                             <Text style={{ paddingVertical: 3, fontSize: 24, fontWeight: 'bold', color: '#800000', textAlign: 'center', }}>{book.title}</Text>
 
                                             <Text style={{ paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
 
-                                            <Image source={{uri:book.image}} resizeMode='contain'
+                                            <Image source={{ uri: book.image }} resizeMode='contain'
                                                 style={{ paddingVertical: 3, height: 200, width: '100%', }} />
 
                                             <Text style={{ paddingVertical: 3, fontSize: 16, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>
@@ -59,7 +57,7 @@ const Books = () => {
                                         </View>
                                     ))
                                 }
-                            </ScrollView>
+                            </View>
                         </View>
                     }
 
@@ -72,13 +70,13 @@ const Books = () => {
                                 readings.map((book, id) => (
                                     <View
                                         key={id}
-                                        style={{ justifyContent: 'space-between', alignItems: 'center', width: 350, padding: 15, borderWidth: 1, borderColor: '#800000', elevation: 10, borderRadius: 25, margin: 5 }}>
+                                        style={{...styles.bookCard, marginVertical:30}}>
 
                                         <Text style={{ paddingVertical: 3, fontSize: 24, fontWeight: 'bold', color: '#800000', textAlign: 'center', }}>{book.title}</Text>
 
                                         <Text style={{ paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
 
-                                        <Image source={{uri:book.image}} resizeMode='contain'
+                                        <Image source={{ uri: book.image }} resizeMode='contain'
                                             style={{ paddingVertical: 3, height: 200, width: '100%', }} />
 
                                         <Text style={{ paddingVertical: 3, fontSize: 16, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>
@@ -88,6 +86,8 @@ const Books = () => {
                             }
                         </ScrollView>
                     }
+
+                    <Footer/>
 
                 </ScrollView>
             </View>
@@ -99,8 +99,27 @@ export default Books
 
 const styles = StyleSheet.create({
     container: {
-        height:'100%',
+        height: '100%',
         paddingTop: Platform.OS === "android" ?
             StatusBar.currentHeight : 0,
     },
+    bookCard: {
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 350,
+        padding: 15,
+        borderWidth: 1,
+        borderColor: '#800000',
+        elevation: 10,
+        borderRadius: 25,
+        margin: 5,
+        elevation: 10,
+        shadowColor: Platform.OS === 'web' || 'ios' ? '#00000090' : null,
+        shadowOffset: {
+            height: Platform.OS === 'web' || 'ios' ? 2 : null,
+            width: Platform.OS === 'web' || 'ios' ? 2 : null
+        },
+        shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
+
+    }
 })

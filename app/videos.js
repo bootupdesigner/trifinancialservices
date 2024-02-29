@@ -97,6 +97,7 @@ const Videos = () => {
                                     <Text style={{ fontSize: 18.75, fontWeight: 'bold', color: '#800000', padding: 10 }}>Follow Us On YouTube!</Text>
 
                                 </TouchableOpacity >
+                                <Footer/>
                             </View>
                         ) : (
                             <>

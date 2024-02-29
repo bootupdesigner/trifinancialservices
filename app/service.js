@@ -9,6 +9,7 @@ import { useMediaQuery } from "react-responsive";
 import ServiceDescription from '../assests/components/ServiceDescription';
 
 import { triServices } from '../assests/data';
+import Footer from '../assests/components/Footer';
 
 const Services = () => {
   const navigation = useNavigation();
@@ -75,6 +76,7 @@ const Services = () => {
                   </View>
                 </View>
               )}
+              <Footer/>
 
           </ScrollView>
         </View>
@@ -97,6 +99,8 @@ const Services = () => {
             prevImg={selectedService.prevImg}
             image={selectedService.image}
           />
+
+          <Footer/>
 
         </ScrollView>
       </View>
