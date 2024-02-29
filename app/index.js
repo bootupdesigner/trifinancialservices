@@ -78,14 +78,42 @@ export default function Page() {
                     onPress={() => navigation.navigate('service')}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
                   </TouchableOpacity>
+                </View>
 
-                  {/* youtube video  */}
+              )}
 
-                  <WelcomeVideo />
+{isTablet &&
+              (
+                <View>
+                  <Text
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                  <Text
+                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
 
-                  {/* email form  */}
-                  <Form />
-                  <Footer />
+
+                  <Text
+                    onPress={() => navigation.navigate('service')}
+                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+
+
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {triServices.map((i, index) => (
+                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                        <ServiceDescription
+                          id={i.id}
+                          serviceName={i.serviceName}
+                          prevImg={i.prevImg}
+                          navigation={navigation}
+                          blog={i.blog}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                  <TouchableOpacity
+                    style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
+                    onPress={() => navigation.navigate('service')}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
+                  </TouchableOpacity>
                 </View>
 
               )}
@@ -119,6 +147,14 @@ export default function Page() {
                 </TouchableOpacity>
               </View>
             )}
+
+            {/* youtube video  */}
+
+            <WelcomeVideo />
+
+            {/* email form  */}
+            <Form />
+            <Footer />
 
           </View>
         </ScrollView>

@@ -60,6 +60,7 @@ const Services = () => {
                 <View style={{ paddingHorizontal: 100, }}>
                   <Text
                     style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+         
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap',}}>
 
                     {triServices.map((i, index) => (
@@ -113,6 +114,7 @@ export default Services
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     paddingTop: Platform.OS === "android" ?
       StatusBar.currentHeight : 0,
   },
