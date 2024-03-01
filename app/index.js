@@ -8,6 +8,7 @@ import WelcomeVideo from "../assests/components/WelcomeVIdeo";
 import Form from "../assests/components/Form";
 import { triServices } from "../assests/data";
 import Footer from "../assests/components/Footer";
+import Slider from "../assests/components/Slider";
 
 export default function Page() {
 
@@ -82,7 +83,7 @@ export default function Page() {
 
               )}
 
-{isTablet &&
+            {isTablet &&
               (
                 <View>
                   <Text
@@ -151,7 +152,7 @@ export default function Page() {
             {/* youtube video  */}
 
             <WelcomeVideo />
-
+            <Slider />
             {/* email form  */}
             <Form />
             <Footer />

@@ -48,14 +48,6 @@ export default function Layout() {
           />
 
           <Drawer.Screen
-            name="blogs"
-            options={{
-              drawerLabel: 'Blogs',
-              title: 'Blogs',
-            }}
-          />
-
-          <Drawer.Screen
             name="contact"
             options={{
               drawerLabel: 'Contact TRI',
