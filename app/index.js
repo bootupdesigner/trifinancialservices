@@ -14,19 +14,13 @@ export default function Page() {
 
   const navigation = useNavigation();
 
-  const isMobile = useMediaQuery({
-    maxDeviceWidth: 480,
-  })
-
-  const isTablet = useMediaQuery({
-    minDeviceWidth: 480,
-    maxDeviceWidth: 1224,
-  });
-
   const isDesktopOrLaptop = useMediaQuery({
-    minDeviceWidth: 1224,
+    query: '(min-width: 1224px)'
   });
 
+  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  
   const financialFuture = `Enroll in Medicare or change plan today! Contact Renee to learn about better life insurance policies. We’re Ready to answer any questions you may have about your 401K Rollover. Call Renee Today!`
 
   return (
@@ -47,88 +41,20 @@ export default function Page() {
               </ImageBackground>
             </View>
 
-            {isMobile &&
-              (
-                <View>
-                  <Text
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
-                  <Text
-                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
-
-
-                  <Text
-                    onPress={() => navigation.navigate('service')}
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-
-
-                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    {triServices.map((i, index) => (
-                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
-                        <ServiceDescription
-                          id={i.id}
-                          serviceName={i.serviceName}
-                          prevImg={i.prevImg}
-                          navigation={navigation}
-                          blog={i.blog}
-                        />
-                      </View>
-                    ))}
-                  </ScrollView>
-                  <TouchableOpacity
-                    style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
-                    onPress={() => navigation.navigate('service')}>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
-                  </TouchableOpacity>
-                </View>
-
-              )}
-
-            {isTablet &&
-              (
-                <View>
-                  <Text
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
-                  <Text
-                    style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
-
-
-                  <Text
-                    onPress={() => navigation.navigate('service')}
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-
-
-                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    {triServices.map((i, index) => (
-                      <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
-                        <ServiceDescription
-                          id={i.id}
-                          serviceName={i.serviceName}
-                          prevImg={i.prevImg}
-                          navigation={navigation}
-                          blog={i.blog}
-                        />
-                      </View>
-                    ))}
-                  </ScrollView>
-                  <TouchableOpacity
-                    style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
-                    onPress={() => navigation.navigate('service')}>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
-                  </TouchableOpacity>
-                </View>
-
-              )}
-
-            {isDesktopOrLaptop && (
-              <View style={{ paddingHorizontal: 100, }}>
+            {isMobileOrTablet ? (
+              <View>
                 <Text
                   style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
                 <Text
                   style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
-                <Text
-                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
 
+
+                <Text
+                  onPress={() => navigation.navigate('service')}
+                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+
+
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {triServices && triServices.slice(0, 6).map((i, index) => (
                     <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
                       <ServiceDescription
@@ -140,7 +66,39 @@ export default function Page() {
                       />
                     </View>
                   ))}
+                </ScrollView>
+                <TouchableOpacity
+                  style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
+                  onPress={() => navigation.navigate('service')}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View style={{ paddingHorizontal: 100, }}>
+                <Text
+                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                <Text
+                  style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+
+
+                <Text
+                  onPress={() => navigation.navigate('service')}
+                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
+
+                {triServices && triServices.slice(0, 6).map((i, index) => (
+                    <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
+                      <ServiceDescription
+                        id={i.id}
+                        serviceName={i.serviceName}
+                        prevImg={i.prevImg}
+                        navigation={navigation}
+                        blog={i.blog}
+                      />
+                    </View>
+                  ))}
                 </View>
+
                 <TouchableOpacity
                   style={{ margin: 30, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
                   onPress={() => navigation.navigate('service')}>

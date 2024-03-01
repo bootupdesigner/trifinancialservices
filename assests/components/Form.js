@@ -5,7 +5,7 @@ import { TextInput, Button, Checkbox } from 'react-native-paper';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Form = () => {
 
@@ -238,11 +238,11 @@ const Form = () => {
                                 ))}
                         </View>
 
-                        {/* <ReCAPTCHA
+                        {Platform.OS==='web' &&     <ReCAPTCHA
                             sitekey={process.env.RECAPTCHA_SITE_KEY}
                             onChange={onChange}
 
-                        /> */}
+                        />}
 
                         <Button
                             icon='send'
@@ -309,11 +309,11 @@ const Form = () => {
                                 ))}
                         </View>
 
-                        {/* <ReCAPTCHA
+                        {Platform.OS==='web' &&     <ReCAPTCHA
                             sitekey={process.env.RECAPTCHA_SITE_KEY}
                             onChange={onChange}
 
-                        /> */}
+                        />}
 
                         <Button
                             icon='send'
@@ -379,11 +379,11 @@ const Form = () => {
                                 ))}
                         </View>
 
-                        {/* <ReCAPTCHA
+                   {Platform.OS==='web' &&     <ReCAPTCHA
                             sitekey={process.env.RECAPTCHA_SITE_KEY}
                             onChange={onChange}
 
-                        /> */}
+                        />}
 
                         <Button
                             icon='send'
