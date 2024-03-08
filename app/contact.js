@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../assests/components/Header';
 import Form from '../assests/components/Form';
 import Footer from '../assests/components/Footer';
+import GoogleMap from '../assests/components/Map';
 
 const Contact = () => {
     return (
@@ -14,6 +15,7 @@ const Contact = () => {
                     <View>
                         <Form />
                     </View>
+                    <GoogleMap/>
                     <Footer/>
                 </ScrollView>
             </View>

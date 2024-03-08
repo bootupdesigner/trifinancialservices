@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Platform, StatusBar, SafeAreaView, ScrollView, Image } from 'react-native';
 import React from 'react';
 import Header from '../assests/components/Header';
-import Renee from '../assests/images/Renee.jpg';
 import '@expo/match-media';
 import { useMediaQuery } from "react-responsive";
 import { Fontisto } from '@expo/vector-icons';
@@ -64,7 +63,7 @@ const aboutTri = {
 
             `Ultimately, Renee’s goal is to help families and individuals, of all income levels, become financially independent and to show them how to leave a financial legacy to their families.`,
         ],
-        image: Renee,
+        image: 'https://res.cloudinary.com/daj06anmm/image/upload/v1709312978/Renee_ikihix.jpg',
     },
     affiliations: {
         person: `Affiliations`,
@@ -85,7 +84,7 @@ const Summaries = ({ summary, index }) => (
     Array.isArray(summary) &&
     summary.map((paragraph, paragraphIndex) => (
         <View key={paragraphIndex} style={{ paddingVertical: 5 }}>
-            <Text style={{
+            <Text style={{fontFamily:'Times New Roman', lineHeight:'150%',
                 fontSize: 18,
                 color: index % 2 === 0 ? '#ffffff' : 'black'
             }}>
@@ -122,7 +121,7 @@ const Testimonial = ({ testimonial, index }) => (
 
         <Summaries summary={testimonial.testimonial} index={index} />
 
-        <Text style={{ color: index % 2 === 0 ? '#ffffff' : 'black', fontSize: 16, fontWeight: 'bold' }}>-- {testimonial.person}</Text>
+        <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',color: index % 2 === 0 ? '#ffffff' : 'black', fontSize: 18, fontWeight: 'bold' }}>-- {testimonial.person}</Text>
         <Fontisto style={styles.quoteRight} name="quote-a-left" size={24} color="#800000" />
     </View>
 );
@@ -130,14 +129,13 @@ const Testimonial = ({ testimonial, index }) => (
 
 const About = () => {
 
-    const isMobileOrTablet = useMediaQuery({
-        maxDeviceWidth: 1224,
-    })
-
-
+  
     const isDesktopOrLaptop = useMediaQuery({
-        minDeviceWidth: 1224,
-    });
+        query: '(min-width: 1224px)'
+      });
+    
+      const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' });
+    
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
@@ -145,7 +143,7 @@ const About = () => {
                 <ScrollView>
                     <Header pageTitle={"About TRI Financial Services"} />
                     {isMobileOrTablet && (
-                        <View style={{ paddingHorizontal: 30 }}>
+                        <View style={{ paddingHorizontal: 10 }}>
 
                             <Text style={styles.sectionTitle}>Mission</Text>
 
@@ -168,7 +166,7 @@ const About = () => {
                             <Summaries summary={aboutTri.affiliations.summary} />
 
                             <View style={{ paddingHorizontal: 40 }}>
-                                <Text style={{ fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>Testimonials</Text>
+                                <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>Testimonials</Text>
                                 {aboutTri.testimonials.map((testimonial, index) => (
                                     <Testimonial key={testimonial.id} testimonial={testimonial} index={index} />
                                 ))}
@@ -242,6 +240,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginTop: 10,
+        fontFamily:'Times New Roman', 
+        lineHeight:'150%',
     },
     quoteLeft: {
         position: 'absolute',

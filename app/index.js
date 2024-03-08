@@ -36,22 +36,22 @@ export default function Page() {
               <ImageBackground style={styles.image}
                 source={{ uri: 'https://res.cloudinary.com/daj06anmm/image/upload/v1708909951/family_gngszc.jpg' }}
                 resizeMode='cover'>
-                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
-                <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Contact us today to get your Free Insurance Assessment.</Text>
+                <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 24 }}>Secure Your Financial Future</Text>
+                <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 18 }}>Contact us today to get your Free Insurance Assessment.</Text>
               </ImageBackground>
             </View>
 
             {isMobileOrTablet ? (
               <View>
                 <Text
-                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                  style={{fontFamily:'Times New Roman', lineHeight:'150%', fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
                 <Text
-                  style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+                  style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 18, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
 
 
                 <Text
-                  onPress={() => navigation.navigate('service')}
-                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                  onPress={() => navigation.navigate('services')}
+                  style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
 
 
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -69,21 +69,21 @@ export default function Page() {
                 </ScrollView>
                 <TouchableOpacity
                   style={{ margin: 10, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
-                  onPress={() => navigation.navigate('service')}>
-                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
+                  onPress={() => navigation.navigate('services')}>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white', }}>View All</Text>
                 </TouchableOpacity>
               </View>
             ) : (
               <View style={{ paddingHorizontal: 100, }}>
                 <Text
-                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
+                  style={{fontFamily:'Times New Roman', lineHeight:'150%', fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Plan Your Financial Future</Text>
                 <Text
-                  style={{ fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
+                  style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 16, color: 'black', paddingHorizontal: 10, paddingBottom: 10, }}>{financialFuture}</Text>
 
 
                 <Text
-                  onPress={() => navigation.navigate('service')}
-                  style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                  onPress={() => navigation.navigate('services')}
+                  style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
 
                 {triServices && triServices.slice(0, 6).map((i, index) => (
@@ -101,8 +101,8 @@ export default function Page() {
 
                 <TouchableOpacity
                   style={{ margin: 30, padding: 10, width: 180, backgroundColor: 'black', alignItems: 'center', justifyContent: 'center', borderColor: '#800000', borderWidth: 1, borderRadius: 25 }}
-                  onPress={() => navigation.navigate('service')}>
-                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
+                  onPress={() => navigation.navigate('services')}>
+                  <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 16, fontWeight: 'bold', color: 'white', }}>View All</Text>
                 </TouchableOpacity>
               </View>
             )}

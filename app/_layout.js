@@ -24,9 +24,9 @@ export default function Layout() {
           />
 
           <Drawer.Screen
-            name="service"
+            name="services"
             options={{
-              drawerLabel: 'Service',
+              drawerLabel: 'Services',
               title: 'Service',
             }}
           />
@@ -52,6 +52,14 @@ export default function Layout() {
             options={{
               drawerLabel: 'Contact TRI',
               title: 'Contact TRI',
+            }}
+          />
+
+          <Drawer.Screen
+            name="join-our-team"
+            options={{
+              drawerLabel: 'Join Our Team',
+              title: 'Join Our Team',
             }}
           />
         </Drawer>

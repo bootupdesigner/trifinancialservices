@@ -49,14 +49,14 @@ const Books = () => {
                                             key={id}
                                             style={styles.bookCard}>
 
-                                            <Text style={{ paddingVertical: 3, fontSize: 24, fontWeight: 'bold', color: '#800000', textAlign: 'center', }}>{book.title}</Text>
+                                            <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',paddingVertical: 3, fontSize: 24, fontWeight: 'bold', color: '#800000', textAlign: 'center', }}>{book.title}</Text>
 
-                                            <Text style={{ paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
+                                            <Text style={{ fontFamily:'Times New Roman', lineHeight:'150%',paddingVertical: 3, fontSize: 18.75, fontWeight: 'bold', textAlign: 'center', }}>{book.author}</Text>
 
                                             <Image source={{ uri: book.image }} resizeMode='contain'
                                                 style={{ paddingVertical: 3, height: 200, width: '100%', }} />
 
-                                            <Text style={{ paddingVertical: 3, fontSize: 16, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>
+                                            <Text style={{fontFamily:'Times New Roman', lineHeight:'150%', paddingVertical: 3, fontSize: 18, fontWeight: 'normal', textAlign: 'center', }}>{book.description}</Text>
 
                                         </TouchableOpacity>
                                     ))

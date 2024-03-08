@@ -3,39 +3,31 @@ import React from 'react';
 const ServiceDescription = ({
     navigation, id, serviceName, prevImg, blog }) => {
 
-        const navigateToService = (service) => {
-            navigation.navigate('service', { service: id });
-        };
+    const navigateToService = (service) => {
+        navigation.navigate('services', { service: id });
+    };
     return (
         <TouchableOpacity onPress={navigateToService} style={styles.container}>
             <Text style={styles.cardHeading}>{serviceName}</Text>
             <View style={{ alignItems: 'center', backgroundColor: 'white', }}>
                 <Image
-                    source={{uri: prevImg}}
+                    source={{ uri: prevImg }}
                     resizeMode='contain'
                     style={{ width: 300, height: 169, }} />
 
             </View>
-            
-            {blog && blog[1] && blog[1].summary ? (
-                <Text
-                    numberOfLines={2}
-                    style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}
-                >
-                    {blog[1].summary}
+
+            {blog && Array.isArray(blog) && blog.length > 0 && (
+                <Text numberOfLines={2} style={{ fontFamily:'Times New Roman', lineHeight:'150%',fontSize: 18, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}>
+                    {blog[0].summary && Array.isArray(blog[0].summary) && blog[0].summary.length > 0
+                        ? blog[0].summary[0].paragraph.join(' ')
+                        : ''}
                 </Text>
-            ):(
-                <Text
-                numberOfLines={2}
-                style={{ fontSize: 16, color: 'black', backgroundColor: 'white', paddingHorizontal: 10 }}
-            >
-                {blog[0].summary}
-            </Text>
             )}
 
-            <Text 
-            numberOfLines={1}
-            style={styles.learnButton}>Learn more about {serviceName}</Text>
+            <Text
+                numberOfLines={1}
+                style={styles.learnButton}>Learn more about {serviceName}</Text>
         </TouchableOpacity>
     )
 }
@@ -59,12 +51,12 @@ const styles = StyleSheet.create({
         },
         shadowRadius: Platform.OS === 'web' || 'ios' ? 10 : null,
     },
-    learnButton: {
+    learnButton: {fontFamily:'Times New Roman',
         fontSize: 16, fontWeight: 'bold', textAlign: 'center', color: '#ffffff', backgroundColor: '#000000', padding: 12,
         borderColor: '#800000',
         borderBottomLeftRadius: 25, borderBottomRightRadius: 25,
     },
-    cardHeading: {
+    cardHeading: {fontFamily:'Times New Roman',
         fontWeight: 'bold', fontSize: 18.75, textAlign: 'center', backgroundColor: 'white', borderTopRightRadius: 25, borderTopLeftRadius: 25,
     },
 })

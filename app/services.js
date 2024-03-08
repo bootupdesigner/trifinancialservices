@@ -38,10 +38,10 @@ const Services = () => {
 
             {isMobileOrTablet ?
               (
-                <View>
+                <View style={{ paddingHorizontal: 10, }}>
 
                   <Text
-                    style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
+                    style={{ fontFamily: 'Times New Roman', lineHeight: '150%', fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
                   <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {triServices.map((i, index) => (
                       <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
@@ -60,8 +60,8 @@ const Services = () => {
                 <View style={{ paddingHorizontal: 100, }}>
                   <Text
                     style={{ fontSize: 24, fontWeight: 'bold', color: '#800000', padding: 10, }}>Financial Services</Text>
-         
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap',}}>
+
+                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
 
                     {triServices.map((i, index) => (
                       <View key={index} style={{ padding: 10, justifyContent: 'space-evenly', }}>
@@ -77,7 +77,7 @@ const Services = () => {
                   </View>
                 </View>
               )}
-              <Footer/>
+            <Footer />
 
           </ScrollView>
         </View>
@@ -93,15 +93,31 @@ const Services = () => {
           <Header
             pageTitle={selectedService.serviceName} />
 
-          <Service
-            id={selectedService.id}
-            blog={selectedService.blog}
-            serviceName={selectedService.serviceName}
-            prevImg={selectedService.prevImg}
-            image={selectedService.image}
-          />
+          {isMobileOrTablet && (
+            <View style={{ paddingHorizontal: 10, }}>
+              <Service
+                id={selectedService.id}
+                blog={selectedService.blog}
+                serviceName={selectedService.serviceName}
+                prevImg={selectedService.prevImg}
+                image={selectedService.image}
+              />
+            </View>
+          )}
 
-          <Footer/>
+          {isDesktopOrLaptop && (
+            <View style={{ paddingHorizontal: 100, }}>
+              <Service
+                id={selectedService.id}
+                blog={selectedService.blog}
+                serviceName={selectedService.serviceName}
+                prevImg={selectedService.prevImg}
+                image={selectedService.image}
+              />
+            </View>
+          )}
+
+          <Footer />
 
         </ScrollView>
       </View>

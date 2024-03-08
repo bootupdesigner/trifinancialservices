@@ -21,7 +21,7 @@ export const menu = [
   },
   {
     id: '3',
-    page: '/service',
+    page: '/services',
     name: 'Services',
   },
   {
@@ -166,6 +166,8 @@ const styles = StyleSheet.create({
 
   },
   h1: {
+    fontFamily:'Times New Roman', 
+    lineHeight:'150%',
     fontSize: 32,
     fontWeight: 'bold',
     textAlign: 'center',

@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const SocialLinks = () => {
     return (
         <View style={{ paddingTop: 20, justifyContent: 'space-between', height: 300 }}>
-            <Text style={{ color: 'white', fontSize: 18.75, fontWeight: 'bold', }}>Stay Connected</Text>
+            <Text style={{fontFamily:'Times New Roman', color: 'white', fontSize: 18.75, fontWeight: 'bold', }}>Stay Connected</Text>
 
             <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/channel/UCyjmGgjaYc9gCEbMhRYTk-w')} style={{
                 flexDirection: 'row',
@@ -15,7 +15,7 @@ const SocialLinks = () => {
             }}>
                 <FontAwesome name="youtube" size={24} color="white" />
 
-                <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>YouTube</Text>
+                <Text style={{fontFamily:'Times New Roman', fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>YouTube</Text>
 
             </TouchableOpacity >
 
@@ -26,7 +26,7 @@ const SocialLinks = () => {
             }}>
                 <FontAwesome name="linkedin" size={24} color="white" />
 
-                <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>LinkedIn</Text>
+                <Text style={{ fontFamily:'Times New Roman',fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>LinkedIn</Text>
 
             </TouchableOpacity >
             <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/TriFinancialCo')} style={{
@@ -36,7 +36,7 @@ const SocialLinks = () => {
             }}>
                 <FontAwesome name="facebook" size={24} color="white" />
 
-                <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>Facebook</Text>
+                <Text style={{ fontFamily:'Times New Roman',fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>Facebook</Text>
 
             </TouchableOpacity >
 
@@ -47,7 +47,7 @@ const SocialLinks = () => {
             }}>
                 <FontAwesome name="twitter" size={24} color="white" />
 
-                <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>Twitter</Text>
+                <Text style={{ fontFamily:'Times New Roman',fontSize: 16, fontWeight: 'bold', color: 'white', padding: 10 }}>Twitter</Text>
 
             </TouchableOpacity >
 
