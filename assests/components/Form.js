@@ -111,7 +111,7 @@ const Form = () => {
         try {
             setLoading(true);
 
-            const response = await axios.post("http://localhost:8080/send", {
+            const response = await axios.post("https://tri-server.onrender.com/send", {
                 mailerState,
             }, {
                 timeout: 10000,
