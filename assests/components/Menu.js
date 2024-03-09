@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { menu } from './Header'
+import { useRouter } from 'expo-router'
 
 const Menu = () => {
+  const router =useRouter();
     return (
         <View style={{paddingTop:10,justifyContent:'space-between',height:300}}>
         <Text style={{ fontFamily:'Times New Roman',color: 'white', fontSize: 18.75, fontWeight: 'bold', }}>Quick Links</Text>
